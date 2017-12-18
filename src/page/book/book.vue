@@ -51,7 +51,15 @@ export default {
     },
     setStyle() {
       console.log('setStyle');
-      this.showSet = true;
+      if (this.showOption || this.showSet) {
+        this.showSet = false;
+        this.showOption = false;
+      }
+      if (this.showSet) {
+        this.showSet = false;
+      } else {
+        this.showSet = true;
+      }
     },
     bgstyle(res) {
       this.className = res;
@@ -60,13 +68,13 @@ export default {
       this.showSet = false;
       this.showOption = true;
     },
-    fontChange(res){
+    fontChange(res) {
       switch (res) {
         case 'big':
-
+          this.$refs.content.style.fontSize = '16px';
           break;
         default:
-
+          this.$refs.content.style.fontSize = '12px';
       }
     }
   }
